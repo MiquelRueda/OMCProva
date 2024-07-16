@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit ToDo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Edit ToDo</h2>
+    <form action="/todos/edit/{id}" method="post" th:action="@{/todos/edit/{id}(id=${todo.id})}" th:object="${todo}">
+        <input type="hidden" th:field="*{id}">
+
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" required>
+
+        <label>Completed:</label>
+        <input type="checkbox" th:field="*{completed}">
+
+        <input type="submit" value="Save">
+    </form>
+
+</body>
+
+</html>
